@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <script src="/static/vue.js"></script> -->
+    <script src="/static/js/jquery.js"></script>
+    <script src="/static/js/echarts.min.js"></script>
+    <title>{% block title %}{% endblock %}</title>
+    <style>
+        div, a, span, section, input, body{
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+    {% block style %}{% endblock %}
+</head>
+<body>
+    {% include 'head.html' %}
+    {% include 'side.html' %}
+    {% block body %}{% endblock %}
+    {% include 'foot.html' %}
+</body>
+</html>

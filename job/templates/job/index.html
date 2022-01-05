@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="/static/js/jquery.js"></script>
+    <script src="/static/js/echarts.min.js"></script>
+    <title>index</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .data{
+            border: 1px black solid;
+            border-collapse: collapse;
+        }
+        .data td{
+            border: 1px black solid;
+        }
+    </style>
+</head>
+<body>
+<table class="data">
+    {% for i  in object_list %}
+        <tr>
+        <td>{{ i.id }}</td>&nbsp;<td>{{ i.name }}</td>&nbsp;<td>{{ i.company }}</td> <td>{% for j  in i.label_set.all %}
+            {{ j }}
+        {% endfor %}
+        </td>
+        </tr>
+    {% endfor %}
+</table>
+
+{{ page_obj.number }}
+{{ page_range }}
+
+{{ another }}
+<div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+        {% endif %}
+        {% for i in page_range %}
+            {% if i == page_obj.number %}
+                <a href="{% url "job:index" %}?page={{ i }}" class="current">{{ i }}</a>
+                {% else %}
+                <a href="{% url "job:index" %}?page={{ i }}" title="">{{ i }}</a>
+            {% endif %} 
+
+        {% endfor %}
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">next</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+
+</body>
+</html>
