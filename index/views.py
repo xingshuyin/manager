@@ -44,7 +44,7 @@ class signup(View):
     template_name = 'index/signup.html'
 
     def get(self, request):
-        return render(request, 'index/signup.html')
+        return render(request, self.template_name)
 
     def post(self, request):
         name, password, code = request.data['name', 'password', 'code']

@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'graph',
     'job',
     'rest_framework',
+    'django_filters',
 ]
 
 MIDDLEWARE = [
@@ -94,7 +95,19 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.IsAuthenticated',  # 普通用户
         'rest_framework.permissions.AllowAny',  # 所有用户
         'rest_framework.permissions.IsAdminUser', # 管理员
-    )
+    ),
+    'DEFAULT_THROTTLE_CLASSES': (  # 限流用户
+        'rest_framework.throttling.AnonRateThrottle',  # 限制未授权用户
+        'rest_framework.throttling.UserRateThrottle'  # 限制认证用户
+    ),
+    'DEFAULT_THROTTLE_RATES': {  # 限流量
+        'anon': '100/day',  # 未授权用户访问限制次数, 1/minute
+        'user': '1000/day',  # 认证用户访问限制次数
+        'my_throttle': '10/minute',  # 自定义限制, 通用视图中用throttle_scope添加限制
+    },
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',  # 默认分页器
+    'PAGE_SIZE': 100,  # 默认每页数量,使用全局的时候无法用过参数修改每页数量
+    'DEFAULT_FILTER_BACKENDS': ('django_filters.rest_framework.DjangoFilterBackend',),
 }
 
 # my_db = pymysql.connect(host='47.104.78.62', user='root', port=3306, password='111111', db='job', charset='utf8')

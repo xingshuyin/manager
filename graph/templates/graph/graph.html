@@ -1,88 +1,152 @@
 {% extends "base.html" %}
 {% block title %}
- 进度图
-{% endblock%}
+    进度图
+{% endblock %}
 {% block style %}
-<style>
-   #body{
-      margin-left: 200px;
-      margin-top: 30px;
-   }
-   .table{
-      overflow-x: auto;
-      /* overflow-wrap: break-word; */
-      /* overscroll-behavior-x: auto; */
-      
-   }
-.progress-table{
-    border: 1px black solid;
-    border-collapse: collapse;
-    /* overflow-x: auto; */
-    width:max-content
-    
-    /* table-layout: fixed; */
-}
-.progress-table td{
-    width: 80px;
-    height: 40px;
-    margin-bottom: 10px;
-    text-align: center;
-    line-height: 200%;
-    background-color: lemonchiffon;
-    border: 1px black solid;
-}
+    <style>
+        .table {
+            overflow-x: auto;
+        }
 
-</style>
+        .progress-table {
+            border: 1px black solid;
+            border-collapse: collapse;
+            width: max-content
+        }
+
+        .progress-table td {
+            width: 80px;
+            height: 40px;
+            margin-bottom: 10px;
+            text-align: center;
+            line-height: 200%;
+            background-color: lemonchiffon;
+            border: 1px black solid;
+        }
+
+        input[type="range"] {
+            -webkit-appearance: none; /*去除默认样式*/
+            margin: 15px auto;
+            background-color: #adc0d9;
+            border-radius: 15px;
+            width: 100px;
+            height: 4px;
+            padding: 0;
+            border: none;
+        {#-webkit-transform: rotate(90deg)#} /*垂直显示*/
+        }
+
+
+    </style>
 {% endblock %}
 
 
 {% block body %}
 
-<div id="body">
-   <div class="table">
-      <table class="progress-table">
-         <th>
-            <td><a href=""></a>1</td>
-            <td><a href=""></a>2</td>
-            <td><a href=""></a>3</td>
-            <td><a href=""></a>4</td>
-            <td><a href=""></a>5</td>
-            <td><a href=""></a>6</td>
-            <td><a href=""></a>7</td>
-            <td><a href=""></a>8</td>
-            <td><a href=""></a>9</td>
-            <td><a href=""></a>10</td>
-            <td><a href=""></a>11</td>
-            <td><a href=""></a>12</td>
-            <td><a href=""></a>13</td>
-            <td><a href=""></a>14</td>
-            <td><a href=""></a>15</td>
-         </th>
-         <tr>
-            <td>工程1</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-         </tr>
-         <tr>
-            <td>工程2</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-         </tr>
-         <tr>
-            <td>工程3</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-         </tr>
-         <tr>
-            <td>工程4</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-         </tr>
-      </table>
-   </div>
-   <input id="width" type="range" min="40" max="100" step="5" value="80" onpointermove="changeShape()"/>
+    <div id="body">
+        <input id="width" type="range" min="40" max="100" step="5" value="80" onpointermove="changeShape()"/>
+        <div class="table">
+            <table class="progress-table">
+                <th>
+                <td><a href=""></a>1</td>
+                <td><a href=""></a>2</td>
+                <td><a href=""></a>3</td>
+                <td><a href=""></a>4</td>
+                <td><a href=""></a>5</td>
+                <td><a href=""></a>6</td>
+                <td><a href=""></a>7</td>
+                <td><a href=""></a>8</td>
+                <td><a href=""></a>9</td>
+                <td><a href=""></a>10</td>
+                <td><a href=""></a>11</td>
+                <td><a href=""></a>12</td>
+                <td><a href=""></a>13</td>
+                <td><a href=""></a>14</td>
+                <td><a href=""></a>15</td>
+                </th>
+                <tr>
+                    <td>工程1</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>工程2</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>工程3</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>工程4</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table>
+
+        </div>
 
 
-   
-
-</div>
-
-    
+    </div>
 
 
-<script>
+
+
+    <script>
 function changeShape(){
    let width = $("#width").val()
    $("table.progress-table td").width(width)
@@ -92,5 +156,6 @@ function changeShape(){
 $(function(){
    changeShape()
 })
-</script>
+
+    </script>
 {% endblock body %}

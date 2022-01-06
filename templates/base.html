@@ -9,21 +9,57 @@
     <script src="/static/js/echarts.min.js"></script>
     <title>{% block title %}{% endblock %}</title>
     <style>
-        div, a, span, section, input, body, html, body{
+        div, a, span, section, input, body, html, body {
             margin: 0;
             padding: 0;
         }
+
         html, body {
             height: 100%;
         }
-        .main {
-            float:left;
+        body{
+            display: flex;
+            flex-grow: 1
         }
+        .main {
+            float: left;
+            overflow-y: auto;
+        }
+
+        .side {
+            background-color: blueviolet;
+            float: left;
+            height: 100%;
+            min-width: 200px;  /* 防止flex状态下被压缩掉 */
+            overflow-y: auto;
+        }
+
+        /*滚动条 火狐不支持*/
+        .side::-webkit-scrollbar {
+            /*滚动条整体样式*/
+            width: 10px; /*高宽分别对应横竖滚动条的尺寸*/
+            height: 1px;
+        }
+
+        .side::-webkit-scrollbar-thumb {
+            /*滚动条里面小方块*/
+            box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+            background: rgba(255, 255, 255, 0.5);
+        }
+
+        .side::-webkit-scrollbar-track {
+            /*滚动条里面轨道*/
+            border-radius: 10px;
+            background: blue;
+        }
+
     </style>
     {% block style %}{% endblock %}
 </head>
 <body>
-{% include 'side.html' %}
+<div class="side">
+    {% include 'side.html' %}
+</div>
 <div class="main">
     {% block body %}{% endblock %}
 </div>
