@@ -86,13 +86,14 @@ DATABASES = {
 }
 # DRF配置信息
 REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': (  # 验证
-        'rest_framework.authentication.BasicAuthentication',  # 需要登录,用于测试
-        'rest_framework.authentication.SessionAuthentication',  #
+    'DEFAULT_AUTHENTICATION_CLASSES': (  # 身份验证
+        'rest_framework.authentication.BasicAuthentication',  # 需要登录,用于测试,弹出框用于登录
+        'rest_framework.authentication.SessionAuthentication',  # session登录
     ),
-    'DEFAULT_PERMISSION_CLASSES': (  # 权限(全局)
-        'rest_framework.permissions.IsAuthenticated',
-        'rest_framework.permissions.AllowAny',
+    'DEFAULT_PERMISSION_CLASSES': (  # 权限验证(全局)
+        'rest_framework.permissions.IsAuthenticated',  # 普通用户
+        'rest_framework.permissions.AllowAny',  # 所有用户
+        'rest_framework.permissions.IsAdminUser', # 管理员
     )
 }
 

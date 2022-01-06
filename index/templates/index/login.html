@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>登录</title>
+</head>
+<style>
+    html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        background-image: url(/static/img/login.jpg);
+        background-position: center;
+    }
+    #container{
+        position:absolute;
+        top:40%;
+        width:100%;
+        text-align: center;
+    }
+    #container input{
+        border:0;
+        border-radius: 10px;
+        background-color: rgba(255,255,255,0.5);
+
+    }
+    #container label{
+        font-size:20px
+    }
+    .textinput{
+        width: 200px;
+        height:30px
+    }
+    .title{
+        position:absolute;
+        width: 100%;
+        font-size:50px;
+        text-align: center;
+        top:20%;
+    }
+    .change{
+        border-radius: 10px;
+        width: 60px;
+        height: 30px;
+        font-size: 12px;
+        position: relative;
+        left:59px;
+    }
+    .login_btn{
+        width: 60px;
+        height: 30px;
+    }
+    .form_data{
+        position: relative;
+        left: -10px;
+    }
+</style>
+<body>
+<span class="title">工程进度管理系统</span>
+<div class="container" id="container">
+            <form action="{% url "login"%}" method="post" class="form_data">
+        <label for="name">账&nbsp;&nbsp;&nbsp;&nbsp;号</label>&nbsp;<input type="text" class="textinput" name="name"><br><br>
+        <label for="psd">密&nbsp;&nbsp;&nbsp;&nbsp;码</label>&nbsp;<input type="password" class="textinput" name="password"><br><br>
+        <label for="verify">验证码</label> <input type="text" class="textinput" name="verify"> <img src="" alt="" ><br><br>
+        <input type="submit" value="登录" class="login_btn"> &nbsp;&nbsp;&nbsp;&nbsp;<a href="{% url 'change' %}"  title=""><input
+            type="button" value="忘记密码?" class="change"></a>
+    </form>
+
+</div>
+
+</body>
+<script>
+
+</script>
+</html>

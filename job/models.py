@@ -1,6 +1,5 @@
-import datetime
-
 from django.db import models
+import datetime
 
 
 # Create your models here.
@@ -14,6 +13,7 @@ class Jobs(models.Model):
     education = models.CharField(max_length=64, null=True)
     position = models.CharField(max_length=128, null=True)
     platform = models.CharField(max_length=20)
+
     # get_data = models.DateTimeField(auto_now=True)
 
     def __str__(self):
@@ -26,3 +26,5 @@ class Label(models.Model):
 
     def __str__(self):
         return self.value
+
+

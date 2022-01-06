@@ -9,17 +9,24 @@
     <script src="/static/js/echarts.min.js"></script>
     <title>{% block title %}{% endblock %}</title>
     <style>
-        div, a, span, section, input, body{
+        div, a, span, section, input, body, html, body{
             margin: 0;
             padding: 0;
+        }
+        html, body {
+            height: 100%;
+        }
+        .main {
+            float:left;
         }
     </style>
     {% block style %}{% endblock %}
 </head>
 <body>
-    {% include 'head.html' %}
-    {% include 'side.html' %}
+{% include 'side.html' %}
+<div class="main">
     {% block body %}{% endblock %}
-    {% include 'foot.html' %}
+</div>
 </body>
+
 </html>

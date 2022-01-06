@@ -2,7 +2,7 @@ import rest_framework.authentication
 from django.http import HttpResponse
 from django.views.generic import ListView
 from django.core.paginator import Paginator
-
+from index.models import User, Token
 from rest_framework import serializers
 from rest_framework import status
 from rest_framework.generics import GenericAPIView
@@ -221,6 +221,14 @@ class ReadOnlyModelViewSetApi(ReadOnlyModelViewSet):  # 读取单个和列表,�
 from rest_framework.decorators import action
 from rest_framework.authentication import SessionAuthentication
 from rest_framework.permissions import IsAuthenticated, AllowAny, IsAuthenticated, IsAdminUser
+
+
+class AuthClass(rest_framework.authentication.BasicAuthentication):
+    def authenticate(self, request):
+        if request.method == 'POST':
+            token = request.POST.get('token')
+            if t := Token.objects.get(token=token):
+                return t.user, token
 
 
 class ModelViewSetApi(ModelViewSet):  # 通用增删改查及请求方式映射
